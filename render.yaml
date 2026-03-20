@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: webp-api
+    env: node
+    buildCommand: |
+      apt-get update && apt-get install -y webp
+      npm install
+    startCommand: node server.js
