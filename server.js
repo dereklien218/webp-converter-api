@@ -18,8 +18,10 @@ app.post("/convert", upload.single("file"), (req, res) => {
   execFile(
     "gif2webp",
     ["-q", quality, "-m", "6", inputPath, "-o", outputPath],
-    (error) => {
+    (error, stdout, stderr) => {
       if (error) {
+        console.error("EXEC ERROR:", error);
+        console.error("STDERR:", stderr);
         return res.status(500).send("Conversion failed");
       }
 
